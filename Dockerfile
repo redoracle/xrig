@@ -23,8 +23,6 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       io.github.offensive-security.license="GPLv3" \
       MAINTAINER="RedOracle <info@redoracle.com>"
 
-VOLUME /datak
-
 RUN set -x \
     && sed -i -e 's/^root::/root:*:/' /etc/shadow \
     && apt-get -yqq update \                                                       
@@ -59,5 +57,3 @@ USER=root \
 PATH=/root/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH 
 
 #CMD ["/bin/bash", "/root/start-xrig.sh"]
-
-EXPOSE 8000
