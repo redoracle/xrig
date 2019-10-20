@@ -58,6 +58,6 @@ ENV=/etc/profile \
 USER=root \
 PATH=/root/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH 
 
-#CMD ["/bin/bash", "/root/start-xrig.sh"]
+CMD ["/bin/bash", "/root/start-xrig.sh"]
 
 EXPOSE 8000
