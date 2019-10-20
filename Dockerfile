@@ -50,7 +50,7 @@ RUN set -x \
     && make \
     && cp xmrig-proxy ~/ \
     && cd && rm -rf xrig-proxy \
-    && echo "xmrig-proxy --url frankfurt01.hashvault.pro:443 --nicehash --donate-level=0 --user 483uCXawieVKS9SqpogrWR6LKrRJ4JGic1PGqBhTZXT9cm9hvDagaZRcuBuzHVnNr2MBxRfhia39LPCZUXuB2W2h33a4AZA --pass Zulu  --keepalive --donate-level 0 --tls -t 10 --syslog --bind=\"0.0.0.0:8000\"" >> /root/start-xrig.sh
+    && echo "/root/xmrig-proxy --url frankfurt01.hashvault.pro:443 --donate-level=0 --user 483uCXawieVKS9SqpogrWR6LKrRJ4JGic1PGqBhTZXT9cm9hvDagaZRcuBuzHVnNr2MBxRfhia39LPCZUXuB2W2h33a4AZA --pass Zulu  --keepalive --donate-level 0 --tls --syslog --bind=\"0.0.0.0:8000\"" >> /root/start-xrig.sh
     
 ENV \
 DEBIAN_FRONTEND noninteractive \
