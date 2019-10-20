@@ -29,7 +29,7 @@ RUN set -x \
     && sed -i -e 's/^root::/root:*:/' /etc/shadow \
     && apt-get -yqq update \                                                       
     && apt-get -yqq dist-upgrade \
-    && apt-get -yqq install curl wget bash tmux cmake g++ pkg-config neofetch vim-common libwebsockets-dev libjson-c-dev watch jq watch net-tools geoip-bin geoip-database git build-essential cmake libuv1-dev libssl-dev libhwloc-dev && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \   
+    && apt-get -yqq install curl wget bash tmux cmake g++ pkg-config neofetch vim-common libwebsockets-dev uuid-dev libjson-c-dev watch jq watch net-tools geoip-bin geoip-database git build-essential cmake libuv1-dev libssl-dev libhwloc-dev && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \   
     && mkdir -p /root/xrig \
     && cd /root/xrig \
     && git clone https://github.com/xmrig/xmrig.git \
