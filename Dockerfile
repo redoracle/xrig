@@ -32,25 +32,16 @@ RUN set -x \
     && apt-get -yqq install curl wget bash tmux cmake g++ pkg-config neofetch vim-common libwebsockets-dev libjson-c-dev watch jq watch net-tools geoip-bin geoip-database git build-essential cmake libuv1-dev libssl-dev libhwloc-dev && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \   
     && mkdir -p /root/xrig \
     && cd /root/xrig \
-    && wget https://raw.githubusercontent.com/clio-one/cardano-on-the-rocks/master/scripts/Jormungandr/jtools.sh \
     && git clone https://github.com/xmrig/xmrig.git \
-    && sed -i -e 's/donate.h//' xmrig/src/base/net/stratum/Pools.cpp \
-    && sed -i -e 's/donate.h//' xmrig/src/base/kernel/config/BaseConfig.cpp \
+    && sed -i -e 's/kDefaultDonateLevel = 5/kDefaultDonateLevel = 0/' xmrig/src/donate.h \
+    && sed -i -e 's/kMinimumDonateLevel = 1/kMinimumDonateLevel = 0/' xmrig/src/donate.h \
     && cd xmrig && mkdir build && cd build \
     && cmake .. \
     && make && make install \
-    && echo "ttyd -p 9001 -R tmux new -A -s ttyd &" >> ~/web_interface_tmux.sh \
-    && echo "tmux attach" >> ~/web_interface_tmux.sh \
-    && echo "tmux source ~/.tmux.conf" >> ~/web_interface_tmux.sh \
-    && cp /usr/share/doc/tmux/example_tmux.conf ~/.tmux.conf \
-    && echo "set -g @plugin 'tmux-plugins/tmux-resurrect'" >> ~/.tmux.conf \
-    && echo "set -g @resurrect-save 'S'" >> ~/.tmux.conf \
-    && echo "set -g @resurrect-restore 'R'" >> ~/.tmux.conf \
-    && echo "set -g @plugin 'tmux-plugins/tmux-continuum'" >> ~/.tmux.conf \
-    && echo "set -g @colors-solarized 'dark'" >> ~/.tmux.conf \
-    && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
-    && echo "run-shell ~/.tmux/plugins/tpm/resurrect.tmux" >> ~/.tmux.conf \
-    && echo "run -b '~/.tmux/plugins/tpm/tpm'" >> ~/.tmux.conf \
+    && cp ../../xmrig/doc/api/1/config.json ~/ \
+    && cp xmrig ~/ \
+    && cd 
+    
     
     
 ENV \
@@ -59,6 +50,6 @@ ENV=/etc/profile \
 USER=root \
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:$PATH 
 
-#CMD ["/bin/bash", "/root/jormungandr/script/start-pool.sh"]
+#CMD ["/bin/bash", "/root/start-xrig.sh"]
 
 EXPOSE 8000
