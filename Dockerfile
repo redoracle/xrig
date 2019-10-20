@@ -37,7 +37,7 @@ RUN set -x \
     && sed -i -e 's/kMinimumDonateLevel = 1/kMinimumDonateLevel = 0/' xmrig/src/donate.h \
     && cd xmrig && mkdir build && cd build \
     && cmake .. \
-    && make && make install \
+    && make \
     && cp ../../xmrig/doc/api/1/config.json ~/ \
     && cp xmrig ~/ \
     && cd 
