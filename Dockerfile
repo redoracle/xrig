@@ -42,7 +42,7 @@ RUN set -x \
     && cd \
     && rm -rf xrig \
     && mkdir -p /root/xrig-proxy \
-    && cd /root/xrig-proxy
+    && cd /root/xrig-proxy \
     && git clone https://github.com/xmrig/xmrig-proxy.git \
     && mkdir xmrig-proxy/build \
     && cd xmrig-proxy/build \
