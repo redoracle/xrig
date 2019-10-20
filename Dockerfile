@@ -50,7 +50,7 @@ RUN set -x \
     && make \
     && cp xmrig-proxy ~/ \
     && cd && rm -rf xrig-proxy \
-    && echo "/root/xmrig-proxy --url frankfurt01.hashvault.pro:443 --donate-level=0 --user 483uCXawieVKS9SqpogrWR6LKrRJ4JGic1PGqBhTZXT9cm9hvDagaZRcuBuzHVnNr2MBxRfhia39LPCZUXuB2W2h33a4AZA --pass Zulu  --keepalive --donate-level 0 --tls --syslog --bind=\"0.0.0.0:8000\"" >> /root/start-xrig.sh
+    && echo "./xmrig --url 188.138.100.69:8000 --nicehash --rig-id Zulu01 --keepalive --donate-level 0 -t 10" >> /root/start-xrig.sh
     
 ENV \
 DEBIAN_FRONTEND noninteractive \
@@ -58,6 +58,6 @@ ENV=/etc/profile \
 USER=root \
 PATH=/root/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH 
 
-CMD ["/bin/bash", "/root/start-xrig.sh"]
+#CMD ["/bin/bash", "/root/start-xrig.sh"]
 
 EXPOSE 8000
