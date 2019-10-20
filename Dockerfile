@@ -38,10 +38,11 @@ RUN set -x \
     && cd xmrig && mkdir build && cd build \
     && cmake .. \
     && make \
-    && cp ../../xmrig/doc/api/1/config.json ~/ \
     && cp xmrig ~/ \
     && cd \
-    && rm -rf xrig
+    && rm -rf xrig \
+    && echo "cp /datak/config.json /root/" >> /root/start-xrig.sh \
+    && echo "/root/xmrig" >> /root/start-xrig.sh
     
     
     
@@ -49,7 +50,7 @@ ENV \
 DEBIAN_FRONTEND noninteractive \
 ENV=/etc/profile \
 USER=root \
-PATH=~/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH 
+PATH=/root/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH 
 
 #CMD ["/bin/bash", "/root/start-xrig.sh"]
 
