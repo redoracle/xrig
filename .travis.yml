@@ -9,12 +9,12 @@ before_script:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 script:
-  - docker build -t "${IMAGE_NAME}:latest" .
+  - docker build -t "${IMAGE_NAME}:proxy" .
 
 after_script:
 
 deploy:
   provider: script
-  script: docker push "${IMAGE_NAME}:latest"
+  script: docker push "${IMAGE_NAME}:proxy"
   on:
-    branch: master
+    branch: proxy
