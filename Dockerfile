@@ -41,10 +41,16 @@ RUN set -x \
     && cp xmrig ~/ \
     && cd \
     && rm -rf xrig \
-    && echo "cp /datak/config.json /root/" >> /root/start-xrig.sh \
-    && echo "/root/xmrig" >> /root/start-xrig.sh
-    
-    
+    && mkdir -p /root/xrig-proxy \
+    && cd /root/xrig-proxy
+    && git clone https://github.com/xmrig/xmrig-proxy.git \
+    && mkdir xmrig-proxy/build \
+    && cd xmrig-proxy/build \
+    && cmake .. \
+    && make \
+    && cp xmrig-proxy ~/ \
+    && cd && rm -rf xrig-proxy \
+    && echo "xmrig-proxy --url frankfurt01.hashvault.pro:443 --nicehash --donate-level=0 --user 483uCXawieVKS9SqpogrWR6LKrRJ4JGic1PGqBhTZXT9cm9hvDagaZRcuBuzHVnNr2MBxRfhia39LPCZUXuB2W2h33a4AZA --pass Zulu  --keepalive --donate-level 0 --tls -t 10 --syslog --bind=\"0.0.0.0:8000\"" >> /root/start-xrig.sh
     
 ENV \
 DEBIAN_FRONTEND noninteractive \
