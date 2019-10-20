@@ -1,2 +1,2 @@
-# xrig
-Docker container with XRIG 0 fee
+# xrig Proxy Server
+Docker container with XMRIG 0 fee
