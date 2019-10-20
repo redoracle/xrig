@@ -10,14 +10,14 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.version=$VERSION \
-      org.label-schema.name='Cardano Node by Redoracle' \
+      org.label-schema.name='Monero Miner based on Xmrig with 0 fee by Redoracle' \
       org.label-schema.description='UNOfficial Xrig miner docker image' \
       org.label-schema.usage='https://www.redoracle.com/docker/' \
       org.label-schema.url='https://www.redoracle.com/' \
       org.label-schema.vendor='Red0racle S3curity' \
       org.label-schema.schema-version='1.0' \
-      org.label-schema.docker.cmd='docker run --rm redoracle/xrig-node-docker' \
-      org.label-schema.docker.cmd.devel='docker run --rm -ti redoracle/xrig-node-docker' \
+      org.label-schema.docker.cmd='docker run --rm redoracle/xrig' \
+      org.label-schema.docker.cmd.devel='docker run --rm -ti redoracle/xrig' \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
       io.github.offensive-security.docker.dockerfile="Dockerfile" \
       io.github.offensive-security.license="GPLv3" \
@@ -40,7 +40,8 @@ RUN set -x \
     && make \
     && cp ../../xmrig/doc/api/1/config.json ~/ \
     && cp xmrig ~/ \
-    && cd 
+    && cd \
+    && rm -rf xrig
     
     
     
@@ -48,7 +49,7 @@ ENV \
 DEBIAN_FRONTEND noninteractive \
 ENV=/etc/profile \
 USER=root \
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:$PATH 
+PATH=~/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH 
 
 #CMD ["/bin/bash", "/root/start-xrig.sh"]
 
