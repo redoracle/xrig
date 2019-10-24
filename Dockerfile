@@ -50,6 +50,8 @@ RUN set -x \
     && cd && rm -rf xrig-proxy \
     && echo "./xmrig --url 188.138.100.69:8000 --nicehash --rig-id Zulu01 --keepalive --donate-level 0 -t 10" >> /root/start-xrig.sh
     
+WORKDIR /root/
+
 ENV \
 DEBIAN_FRONTEND noninteractive \
 ENV=/etc/profile \
